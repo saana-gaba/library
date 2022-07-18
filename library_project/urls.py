@@ -19,6 +19,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("register_account.urls")),
-    path("", include("django.contrib.auth.urls")), # Using Django's User Authentication
+    path("/", include("django.contrib.auth.urls")), # Using Django's User Authentication
     path("", include("books.urls")),
 ]
