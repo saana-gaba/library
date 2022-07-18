@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>You rented {{book.book_title}}</h1>
+
+<br>
+Go Back <a href="{% url 'index' %}">Home</a>
+{% endblock content %}

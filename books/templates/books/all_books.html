@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% include "navbar.html" %}
+<div class="container mt-4">
+    <h1>All Available Books:</h1>
+    <hr>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">S.No.</th>
+            <th scope="col">Book Title</th>
+            <th scope="col">Stock Left</th>
+            <th scope="col">Rent Price</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for book in books %}
+          <form method = "POST" action="{% url 'rent-a-book' book.id %}">
+                {% csrf_token %}
+              <tr>
+                <th>{{book.id}}</th>
+                <td>{{book.book_title}}</td>
+                <td>{{book.stock}}</td>
+                <td>{{book.price}}</td>
+                <td><button type="submit">Rent this</button></td>
+              </tr>
+          </form>
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
+
+{% endblock content %}

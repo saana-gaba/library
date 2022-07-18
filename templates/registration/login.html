@@ -1,0 +1,17 @@
+{% comment %} {% extends 'base.html' %} {% endcomment %}
+
+{% block content %}
+{% comment %} {% load crispy_forms_tags %} {% endcomment %}
+<h1>
+    Login
+</h1>
+    <form method="POST" class="form-group">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+
+<hr>
+<p>Don't have an account? <a href="{% url 'register-page' %}">Register here</a></p>
+<p>Go to <a href="{% url 'index' %}">Home</a></p>
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% include "navbar.html" %}
+<div class="container mt-4">
+    <h2>Hi {{user.first_name}} {{user.last_name}}</h2>
+    <hr>
+    <h3>Rent a book from the variety of books that we have in our stock.</h3>
+    <h4>NOTE : You can rent only one book at a time.</h4>
+    <a href="{% url 'all-books' %}">Browse All Books</a>
+</div>
+
+{% endblock content %}

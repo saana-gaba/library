@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% include "navbar.html" %}
+<div class="container mt-4">
+    <h1>Rent History</h1>
+    <hr>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Book ID</th>
+            <th scope="col">Book Name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Type</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          {% for book in history %}
+          <form method = "POST" action="{% url 'rent-a-book' book.id %}">
+                {% csrf_token %}
+              <tr>
+                <th>{{book.id}}</th>
+                <td>{{book.book.book_title}}</td>
+                <td>{{book.rent_date}}</td>
+                {% if book.rent_type == "REN" %}
+                <td>RENT</td>
+                {% else %}
+                <td>RETURN</td>
+                {% endif %}
+              </tr>
+          </form>
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
+
+{% endblock content %}
